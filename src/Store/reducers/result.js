@@ -1,26 +1,24 @@
-import * as actionType from '../Action/Action'
+import * as actionType from '../Action/Action';
+import {updateObject} from '../Utility';
+
 const initialState = {
     result:[]
 }
 let initialId = 0;
 
+const remove = (state, action) =>{
+    const updatedVal = state.result.filter((result)=>{
+        return result.id !== action.payload.id;
+    });
+    return updateObject(state,{result: updatedVal});
+}
+
 export default function reducer(state=initialState, action){
-    // console.log('Actions', action);
-    // console.log(action);
-    switch(action.type){
-        
+    switch(action.type){ 
         case actionType.SAVE_RESULT:
-            return{
-                ...state,
-                result: state.result.concat({id:++initialId, val:action.payload.val})
-            } ;
+            return updateObject(state,{ result: state.result.concat({id:++initialId, val:action.payload.val})})
         case actionType.REMOVE:
-            return{
-                ...state,
-                result: state.result.filter((result)=>{
-                    return result.id !== action.payload.id;
-                })
-            } ;
+            return remove(state, action);
         default:
             return state;
     }

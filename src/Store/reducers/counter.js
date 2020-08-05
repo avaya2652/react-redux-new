@@ -16,20 +16,11 @@ export default function reducer(state=initialState, action){
             //     count: state.count+1
             // } ;
         case actionType.DECREMENT:
-            return{
-                ...state,
-                count: state.count-1
-            } ;
+            return updateObject(state, {count: state.count-1}); 
         case actionType.ADDBYFIVE:
-            return{
-                ...state,
-                count: state.count+action.value
-            } ;
+            return updateObject(state, {count: state.count+action.value});
         case actionType.SUBBYFIVE:
-            return{
-                ...state,
-                count: state.count-action.value
-            } ;
+            return updateObject(state, {count: state.count-action.value});
         default:
             return state;
     }
