@@ -1,0 +1,12 @@
+/** Component css file **/
+
+.CounterButton{
+    padding: 10px;
+    border-radius: 5px;
+    background-color: orange;
+    color:#000;
+    border: 1px solid #fff;
+    box-shadow: 1px 2px 2px #ccc;
+    margin-right: 20px;
+    cursor: pointer;
+}
